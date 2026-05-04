@@ -95,8 +95,12 @@ lte = less then or equal) */
 // });
 
 // so sánh khác (ne = not equal)
+// db.product.find({
+//   price: {
+//     $ne: 3.5,
+//   },
+// });
+
 db.product.find({
-  price: {
-    $ne: 3.5,
-  },
+  'brand.name': 'vn',
 });
