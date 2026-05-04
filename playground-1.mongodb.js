@@ -18,6 +18,7 @@ use('mongodb_c2409');
 //   address: 'Saigon',
 // });
 
+// insert one
 // db.newStudent.insertOne({
 //   name: 'Diddy',
 //   age: 20,
@@ -25,23 +26,53 @@ use('mongodb_c2409');
 //   gmail: 'diddy@gmail.com',
 // });
 
-db.newStudent.insertMany([
+// insert many
+// db.newStudent.insertMany([
+//   {
+//     name: 'D',
+//     age: 20,
+//     address: 'Saigon',
+//     gmail: 'd@gmail.com',
+//   },
+//   {
+//     name: 'E',
+//     age: 20,
+//     address: 'Saigon',
+//     gmail: 'e@gmail.com',
+//   },
+//   {
+//     name: 'F',
+//     age: 20,
+//     address: 'Saigon',
+//     gmail: 'f@gmail.com',
+//   },
+// ]);
+
+// xoá document
+// db.newStudent.remove({
+//   name: 'F',
+// });
+
+// update 1 data
+// db.newStudent.updateOne(
+//   {
+//     _id: ObjectId('69f815430b0206a1cba717c4'),
+//   },
+//   {
+//     $set: {
+//       name: 'Dave20H',
+//       age: 21,
+//     },
+//   },
+// );
+
+// add 1 cột mới cho tất cả sinh viên
+db.newStudent.updateMany(
+  {},
   {
-    name: 'D',
-    age: 20,
-    address: 'Saigon',
-    gmail: 'd@gmail.com',
+    $set: {
+      gender: 'male',
+      desc: '',
+    },
   },
-  {
-    name: 'E',
-    age: 20,
-    address: 'Saigon',
-    gmail: 'e@gmail.com',
-  },
-  {
-    name: 'F',
-    age: 20,
-    address: 'Saigon',
-    gmail: 'f@gmail.com',
-  },
-]);
+);
