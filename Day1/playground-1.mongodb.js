@@ -67,12 +67,22 @@ use('mongodb_c2409');
 // );
 
 // add 1 cột mới cho tất cả sinh viên
-db.newStudent.updateMany(
-  {},
-  {
-    $set: {
-      gender: 'male',
-      desc: '',
-    },
-  },
-);
+// db.newStudent.updateMany(
+//   {},
+//   {
+//     $set: {
+//       gender: 'male',
+//       desc: '',
+//     },
+//   },
+// );
+
+// unset document
+// db.newStudent.updateMany(
+//   {},
+//   {
+//     $unset: {
+//       desc: '',
+//     },
+//   },
+// );
