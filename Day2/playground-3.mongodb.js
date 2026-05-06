@@ -52,18 +52,18 @@ use('mongodb_c2409');
 // ]);
 
 // Truy vấn 1: Tìm hóa đơn có tên khách hàng bắt đầu bằng "Customer 1" VÀ tổng tiền từ 500 đến 1000
-db.invoice.find({
-  'customer.name': /^Customer 1/,
-  total: { $gt: 500, $lt: 1000 }, // Sửa lỗi: dùng dấu phẩy để kết hợp $gt và $lt
-});
+// db.invoice.find({
+//   'customer.name': /^Customer 1/,
+//   total: { $gt: 500, $lt: 1000 }, // Sửa lỗi: dùng dấu phẩy để kết hợp $gt và $lt
+// });
 
-// Truy vấn 2: Tìm hóa đơn có phương thức thanh toán là 'cash' HOẶC 'credit' VÀ tổng tiền từ 500 đến 1000
-db.invoice.find({
-  payment: { $in: ['cash', 'credit'] }, // Sửa lỗi: dùng $in để tìm nhiều giá trị cho một trường
-  total: { $gt: 500, $lt: 1000 },
-});
+// // Truy vấn 2: Tìm hóa đơn có phương thức thanh toán là 'cash' HOẶC 'credit' VÀ tổng tiền từ 500 đến 1000
+// db.invoice.find({
+//   payment: { $in: ['cash', 'credit'] }, // Sửa lỗi: dùng $in để tìm nhiều giá trị cho một trường
+//   total: { $gt: 500, $lt: 1000 },
+// }); // undefined
 
-// Truy vấn 3: Tìm hóa đơn của khách hàng nữ, có phương thức thanh toán là 'cash' HOẶC 'credit' VÀ tổng tiền từ 500 đến 1000
+// // Truy vấn 3: Tìm hóa đơn của khách hàng nữ, có phương thức thanh toán là 'cash' HOẶC 'credit' VÀ tổng tiền từ 500 đến 1000
 db.invoice.find({
   'customer.gender': 'female',
   payment: { $in: ['cash', 'credit'] }, // Sửa lỗi: dùng $in để tìm nhiều giá trị cho một trường
