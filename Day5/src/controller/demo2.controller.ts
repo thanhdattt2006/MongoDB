@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseBoolPipe } from "@nestjs/common";
+import { Controller, Get, Param, ParseBoolPipe, Query } from "@nestjs/common";
 import { Product } from "src/entity/product.entity";
 
 @Controller("api/demo2")
@@ -59,4 +59,45 @@ export default class Demo2Controller {
     }
   }
 
+  // sort sản phẩm từ min -> max
+  @Get('sort-price-from/:min/to/:max')
+  sortPriceFromTo (@Param("min") min: number, @Param("max") max: number) {
+    let result = this.products.filter(p => p.price >= min && p.price <= max)
+    return {
+      products: result
+    }
+  }
+
+  // liệt kê sản phẩm có chứa từ khoá
+  @Get('searchByKeyword')
+  searchByKeyword (@Query('keyword') keyword: string) {
+    let result = this.products.filter(p => p.name.toLowerCase().includes(keyword.toLowerCase()))
+    return {
+      products: result
+    }
+  }
+
+  // kiểm tra sản phẩm có tồn tại
+  @Get('check-product/:id')
+  checkProduct (@Param("id") id: number) {
+    let result = this.products.find(p => p.id == id)
+    if (result) {
+      return {
+        products : result
+      }
+    } else {
+      return 'invalid'
+    }
+  }
+
+  // sắp xếp theo giá giảm dần
+  @Get('sort-price-desc')
+  sortPriceDesc () {
+    let result = this.products.sort((a, b) => b.price - a.price)
+    return {
+      products: result
+    }
+  }
+
+  //
 }
