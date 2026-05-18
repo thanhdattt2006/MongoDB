@@ -6,9 +6,10 @@ import { DemoService } from './demo.service';
 import { CalculateService } from './calculate.service';
 import { RectangleService } from './rectangle.service';
 import { StudentService } from './student.service';
+import { Demo4Module } from './demo4/demo4.module';
 
 @Module({
-  imports: [],
+  imports: [Demo4Module],
   controllers: [DemoController,Demo2Controller,Demo3Controller],
   providers: [DemoService,CalculateService,RectangleService,StudentService],
 })
