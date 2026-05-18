@@ -1,13 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class SquareService {
-
-  area (a: number) {
-    return a*a;
+  area(a: number) {
+    return a * a;
   }
 
-  perimeter (a: number) {
-    return a*4;
+  perimeter(a: number) {
+    return a * 4;
   }
 }

@@ -1,7 +1,7 @@
-export class Product{
-    id!:number;
-    name!:string;
-    price!:number;
-    quantity!:number;
-    status!:boolean;
+export class Product {
+  id!: number;
+  name!: string;
+  price!: number;
+  quantity!: number;
+  status!: boolean;
 }

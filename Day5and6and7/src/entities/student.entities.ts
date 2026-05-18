@@ -1,7 +1,7 @@
-export class Student{
-    id!: number;
-    name!: string;
-    math!: number;
-    physic!: number;
-    chem!:number
+export class Student {
+  id!: number;
+  name!: string;
+  math!: number;
+  physic!: number;
+  chem!: number;
 }

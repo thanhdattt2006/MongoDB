@@ -6,6 +6,10 @@ import { SquareController } from './Square.controller';
 
 @Module({
   providers: [Demo4Service, SquareService],
-  controllers: [Demo4Controller, SquareController]
+  // FIX: Added missing comma at the end of the controllers array.
+  controllers: [Demo4Controller, SquareController],
+  // FIX: You export services/providers from a module, not the module itself.
+  // So instead of exports: [Demo4Module], you export the services you want to share.
+  exports: [Demo4Service, SquareService],
 })
 export class Demo4Module {}

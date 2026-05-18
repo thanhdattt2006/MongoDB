@@ -1,22 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './controllers/app.controller';
-import { AppService } from './app.service';
+import { DemoController } from './controllers/app.controller';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('DemoController', () => {
+  let demoController: DemoController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [DemoController],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    demoController = app.get<DemoController>(DemoController);
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Hello World"', () => {
+      // FIX: Adjusted the test to check the index() method of DemoController instead of getHello()
+      expect(demoController.index()).toBe('Hello World');
     });
   });
 });

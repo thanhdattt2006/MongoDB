@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {  DemoController } from './controllers/app.controller';
+import { DemoController } from './controllers/app.controller';
 import Demo2Controller from './controllers/demo2.controller';
 import { Demo3Controller } from './controllers/demo3.controller';
 import { DemoService } from './demo.service';
@@ -10,7 +10,7 @@ import { Demo4Module } from './demo4/demo4.module';
 
 @Module({
   imports: [Demo4Module],
-  controllers: [DemoController,Demo2Controller,Demo3Controller],
-  providers: [DemoService,CalculateService,RectangleService,StudentService],
+  controllers: [DemoController, Demo2Controller, Demo3Controller],
+  providers: [DemoService, CalculateService, RectangleService, StudentService],
 })
 export class AppModule {}
