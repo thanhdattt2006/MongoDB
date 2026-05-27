@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { CategoryModule } from './category/category.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { MongooseModule } from '@nestjs/mongoose';
         uri: configService.get('connection_string'),
       }),
     }),
-    CategoryModule
+    CategoryModule,
+    StudentModule
   ],
   controllers: [],
   providers: [],
