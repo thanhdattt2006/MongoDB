@@ -9,15 +9,15 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
     }),
     MongooseModule.forRootAsync({
-      imports: [ConfigService],
+      imports: [ConfigModule],
       inject: [ConfigService],//thay the doan contrucors de import service
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get('connection_string'),
       }),
     }),
     CategoryModule
-    ],
+  ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
