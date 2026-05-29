@@ -6,6 +6,7 @@ import { Category } from './category.model';
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) { }
 
+  // Thêm mới danh mục
   @Post('create')
   async create(@Body() categoryData: Partial<Category>) {
     try {
@@ -24,6 +25,7 @@ export class CategoryController {
     }
   }
 
+  // Lấy danh sách tất cả danh mục
   @Get('find-all')
   findAll() {
     try {
@@ -42,6 +44,7 @@ export class CategoryController {
     }
   }
 
+  // Lấy danh sách tất cả danh mục (có kiểm tra dữ liệu rỗng)
   @Get('find-all2')
   async findAll2() {
     try {
@@ -68,6 +71,7 @@ export class CategoryController {
     }
   }
 
+  // Tìm kiếm danh mục theo ID
   @Get('find-by-id/:id')
   async findById(@Param('id') id: string) {
     try {
@@ -92,6 +96,7 @@ export class CategoryController {
     }
   }
 
+  // Cập nhật danh mục theo ID
   @Put(':id')
   async update(@Param('id') id: string, @Body() categoryData: Partial<Category>) {
     try {
@@ -116,6 +121,7 @@ export class CategoryController {
     }
   }
 
+  // Xóa danh mục theo ID
   @Delete('delete/:id')
   async remove(@Param('id') id: string) {
     try {

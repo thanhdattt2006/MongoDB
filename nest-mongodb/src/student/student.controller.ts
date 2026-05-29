@@ -6,6 +6,7 @@ import { Student } from './student.model';
 export class StudentController {
   constructor(private readonly studentService: StudentService) { }
 
+  // Thêm mới học sinh
   @Post('create')
   async create(@Body() studentData: Partial<Student>) {
     try {
@@ -24,6 +25,7 @@ export class StudentController {
     }
   }
 
+  // Lấy danh sách tất cả học sinh
   @Get('find-all')
   async findAll() {
     try {
@@ -42,6 +44,7 @@ export class StudentController {
     }
   }
 
+  // Lấy danh sách tất cả học sinh (có kiểm tra dữ liệu rỗng)
   @Get('find-all2')
   async findAll2() {
     try {
@@ -67,6 +70,7 @@ export class StudentController {
     }
   }
 
+  // Tìm kiếm học sinh theo tên
   @Get('find-by-name/:name')
   async findByName(@Param('name') name: string) {
     try {
@@ -91,6 +95,7 @@ export class StudentController {
     }
   }
 
+  // Tìm kiếm học sinh theo khoảng điểm (min - max)
   @Get('find-by-min-max/:minScore/:maxScore')
   async findByMinMax(@Param('minScore') minScore: string, @Param('maxScore') maxScore: string) {
     try {
@@ -117,6 +122,7 @@ export class StudentController {
     }
   }
 
+  // Tìm kiếm học sinh theo ID
   @Get('find-by-id/:id')
   async findById(@Param('id') id: string) {
     try {
@@ -141,6 +147,7 @@ export class StudentController {
     }
   }
 
+  // Cập nhật thông tin học sinh theo ID
   @Put('update/:id')
   async update(@Param('id') id: string, @Body() studentData: Partial<Student>) {
     try {
@@ -165,6 +172,7 @@ export class StudentController {
     }
   }
 
+  // Xóa học sinh theo ID
   @Delete('delete/:id')
   async remove(@Param('id') id: string) {
     try {
