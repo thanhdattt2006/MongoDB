@@ -1,53 +1,38 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { Category } from './category.model';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class CategoryService implements OnModuleInit {
-  constructor(
-    @InjectModel(Category.name) private categoryModel: Model<Category>,
-  ) { }
+export class CategoryService {
 
-  async onModuleInit() {
-    try {
-      const count = await this.categoryModel.countDocuments().exec();
-      if (count === 0) {
-        console.log('[Seeder] Category collection is empty. Seeding sample data...');
-        const sampleCategories = [
-          { name: 'Electronics' },
-          { name: 'Clothing & Fashion' },
-          { name: 'Books & Stationery' },
-          { name: 'Home & Kitchen' },
-          { name: 'Sports & Outdoors' }
-        ];
-        await this.categoryModel.insertMany(sampleCategories);
-        console.log('[Seeder] Seeded 5 sample categories successfully.');
-      }
-    } catch (error) {
-      console.error('[Seeder] Failed to seed categories:', error.message || error);
+    constructor(
+        @InjectModel(Category.name)
+        private categoryModel: Model<Category>
+    ) { }
+
+    findAll() {
+        return this.categoryModel.find().exec();
     }
-  }
 
+    findById(id: string) {
+        return this.categoryModel.findById(id).exec();
+    }
 
-  async create(categoryData: Partial<Category>) {
-    const createdCategory = new this.categoryModel(categoryData);
-    return createdCategory.save();
-  }
+    create(category: Category) {
+        return this.categoryModel.create(category);
+    }
 
-  async findAll() {
-    return this.categoryModel.find().exec();
-  }
+    async delete(id: string) {
+        let category = await this.categoryModel.findByIdAndDelete(id).exec();
+        return category != null;
+    }
 
-  async findById(id: string) {
-    return this.categoryModel.findById(id).exec();
-  }
+    async update(id: string, category: Category) {
+        let cate = await this.categoryModel.findByIdAndUpdate(id, category, {
+            new: true
+        }).exec();
+        return cate != null;
+    }
 
-  async update(id: string, categoryData: Partial<Category>) {
-    return this.categoryModel.findByIdAndUpdate(id, categoryData, { new: true }).exec();
-  }
-
-  async remove(id: string) {
-    return this.categoryModel.findByIdAndDelete(id).exec();
-  }
 }
